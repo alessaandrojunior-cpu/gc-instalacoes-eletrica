@@ -6,7 +6,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>GC InstalaÃ§Ãµes ElÃ©tricas | Agenda</title>
+<title>GC Instalações Elétricas | Agenda</title>
 <style>
 :root{--bg:#0b1220;--panel:#121d30;--panel2:#18263d;--text:#f5f7fb;--muted:#aab6c8;--yellow:#f5b82e;--line:#2b3a52;--green:#35c48b;--red:#ff7777}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:15px/1.5 Arial,sans-serif}
@@ -20,27 +20,27 @@ button{border:0;background:var(--yellow);color:#111827;font-weight:800;padding:1
 </style>
 </head>
 <body>
-<header><div class="brand"><div class="logo">GC</div><div><h1>GC InstalaÃ§Ãµes ElÃ©tricas</h1><small>Agenda interna de serviÃ§os</small></div></div><div id="headerUser" class="hidden"><span id="userEmail" class="muted"></span> <button class="secondary" id="logout">Sair</button></div></header>
+<header><div class="brand"><div class="logo">GC</div><div><h1>GC Instalações Elétricas</h1><small>Agenda interna de serviços</small></div></div><div id="headerUser" class="hidden"><span id="userEmail" class="muted"></span> <button class="secondary" id="logout">Sair</button></div></header>
 <main>
 <section id="loginView" class="login-wrap panel">
-<h2>Acesso Ã  agenda</h2><p class="muted">Entre com o e-mail e a senha cadastrados pela GC.</p>
+<h2>Acesso à agenda</h2><p class="muted">Entre com o e-mail e a senha cadastrados pela GC.</p>
 <form id="loginForm"><label for="email">E-mail</label><input id="email" type="email" autocomplete="username" required value="alessaandro.junior@gmail.com"><label for="password">Senha</label><input id="password" type="password" autocomplete="current-password" required><button id="loginButton" type="submit" style="width:100%;margin-top:16px">Entrar</button><div id="loginStatus" class="status" aria-live="polite"></div></form>
 </section>
 <section id="appView" class="hidden">
-<div class="topline"><div><h2>GC InstalaÃ§Ãµes ElÃ©tricas</h2><p class="muted">Os agendamentos sÃ£o compartilhados e sincronizados em tempo real.</p></div><span class="status">â— Conectado</span></div>
-<nav class="navtabs"><button type="button" class="active" data-page="agendaPage">Agenda</button><button type="button" data-page="financePage">Notas e Boletos</button></nav><div id="agendaPage"><section class="panel" id="agenda"><div class="week-head"><button class="secondary" id="prev">â† Semana anterior</button><strong id="weekLabel"></strong><button class="secondary" id="next">PrÃ³xima semana â†’</button></div><div class="week-grid" id="weekGrid"></div></section>
+<div class="topline"><div><h2>GC Instalações Elétricas</h2><p class="muted">Os agendamentos são compartilhados e sincronizados em tempo real.</p></div><span class="status">● Conectado</span></div>
+<nav class="navtabs"><button type="button" class="active" data-page="agendaPage">Agenda</button><button type="button" data-page="financePage">Notas e Boletos</button></nav><div id="agendaPage"><section class="panel" id="agenda"><div class="week-head"><button class="secondary" id="prev">← Semana anterior</button><strong id="weekLabel"></strong><button class="secondary" id="next">Próxima semana →</button></div><div class="week-grid" id="weekGrid"></div></section>
 <div class="columns">
 <section class="panel"><h3 id="formTitle">Novo agendamento</h3>
 <form id="bookingForm">
 <input id="bookingId" type="hidden">
 <label for="client">Nome do cliente</label><input id="client" required placeholder="Nome completo">
-<div class="form-row"><div><label for="phone">Telefone / WhatsApp</label><input id="phone" placeholder="(00) 00000-0000"></div><div><label for="service">Tipo de serviÃ§o</label><select id="service" required><option value="">Selecione</option><option>InstalaÃ§Ã£o elÃ©trica</option><option>ManutenÃ§Ã£o elÃ©trica</option><option>IluminaÃ§Ã£o</option><option>Quadro/disjuntores</option><option>Infraestrutura industrial</option><option>Outro</option></select></div></div>
-<div class="form-row"><div><label for="date">Data</label><input id="date" type="date" required></div><div><label for="time">HorÃ¡rio</label><input id="time" type="time" required></div></div>
-<label for="address">EndereÃ§o do serviÃ§o</label><input id="address" placeholder="Rua, nÃºmero e bairro">
-<label for="details">DescriÃ§Ã£o / observaÃ§Ãµes</label><textarea id="details" placeholder="Detalhes do atendimento"></textarea>
-<div class="actions"><button id="saveBooking" type="submit">Salvar agendamento</button><button class="secondary hidden" id="cancelEdit" type="button">Cancelar ediÃ§Ã£o</button></div><div id="formStatus" class="status" aria-live="polite"></div>
+<div class="form-row"><div><label for="phone">Telefone / WhatsApp</label><input id="phone" placeholder="(00) 00000-0000"></div><div><label for="service">Tipo de serviço</label><select id="service" required><option value="">Selecione</option><option>Instalação elétrica</option><option>Manutenção elétrica</option><option>Iluminação</option><option>Quadro/disjuntores</option><option>Infraestrutura industrial</option><option>Outro</option></select></div></div>
+<div class="form-row"><div><label for="date">Data</label><input id="date" type="date" required></div><div><label for="time">Horário</label><input id="time" type="time" required></div></div>
+<label for="address">Endereço do serviço</label><input id="address" placeholder="Rua, número e bairro">
+<label for="details">Descrição / observações</label><textarea id="details" placeholder="Detalhes do atendimento"></textarea>
+<div class="actions"><button id="saveBooking" type="submit">Salvar agendamento</button><button class="secondary hidden" id="cancelEdit" type="button">Cancelar edição</button></div><div id="formStatus" class="status" aria-live="polite"></div>
 </form></section>
-<section class="panel"><h3>OrganizaÃ§Ã£o</h3><p class="muted">Use a agenda semanal para localizar os serviÃ§os. Cada registro pode ser editado ou excluÃ­do. As alteraÃ§Ãµes aparecem nos outros dispositivos conectados.</p><div class="actions"><button class="secondary" id="export">Exportar agenda (CSV)</button></div><p class="note">Acesso restrito a usuÃ¡rios autenticados no Firebase. NÃ£o compartilhe sua senha.</p></section>
+<section class="panel"><h3>Organização</h3><p class="muted">Use a agenda semanal para localizar os serviços. Cada registro pode ser editado ou excluído. As alterações aparecem nos outros dispositivos conectados.</p><div class="actions"><button class="secondary" id="export">Exportar agenda (CSV)</button></div><p class="note">Acesso restrito a usuários autenticados no Firebase. Não compartilhe sua senha.</p></section>
 </div></section>
 </div>
 <div id="financePage" class="hidden">
@@ -51,32 +51,32 @@ button{border:0;background:var(--yellow);color:#111827;font-weight:800;padding:1
       <a class="portal-link" href="https://www.nfse.gov.br/EmissorNacional/Login" target="_blank" rel="noopener noreferrer">Emitir nova NFS-e ↗</a>
       <a class="portal-link" href="https://nubank.com.br/empresas/solucoes-para-cobranca/assistente-de-cobrancas" target="_blank" rel="noopener noreferrer">Gerar boleto no Nubank PJ ↗</a>
     </div>
-    <p class="note">Esta Ã¡rea organiza e registra os documentos. A emissÃ£o fiscal vÃ¡lida deve ser concluÃ­da no Emissor Nacional e o boleto deve ser gerado no Nubank. Depois, informe o nÃºmero e o link aqui.</p>
+    <p class="note">Esta área organiza e registra os documentos. A emissão fiscal válida deve ser concluída no Emissor Nacional e o boleto deve ser gerado no Nubank. Depois, informe o número e o link aqui.</p>
   </section>
   <div class="finance-grid">
     <section class="panel"><h3>Registrar nota fiscal (NFS-e)</h3>
       <form id="invoiceForm">
-        <label for="invClient">Nome / razÃ£o social do cliente</label><input id="invClient" required>
+        <label for="invClient">Nome / razão social do cliente</label><input id="invClient" required>
         <label for="invDoc">CPF / CNPJ</label><input id="invDoc" required>
-        <div class="form-row"><div><label for="invAmount">Valor (R$)</label><input id="invAmount" type="number" min="0.01" step="0.01" required></div><div><label for="invDate">Data de emissÃ£o</label><input id="invDate" type="date" required></div></div>
-        <label for="invService">DescriÃ§Ã£o do serviÃ§o</label><textarea id="invService" required placeholder="Ex.: instalaÃ§Ã£o e manutenÃ§Ã£o elÃ©trica"></textarea>
-        <div class="form-row"><div><label for="invNumber">Número da NFS-e</label><input id="invNumber" placeholder="Número apÃ³s emitir"></div><div><label for="invLink">Link / PDF da nota</label><input id="invLink" type="url" placeholder="https://..."></div></div>
-        <button type="submit">Salvar no histÃ³rico</button><div id="invoiceStatus" class="status" aria-live="polite"></div>
+        <div class="form-row"><div><label for="invAmount">Valor (R$)</label><input id="invAmount" type="number" min="0.01" step="0.01" required></div><div><label for="invDate">Data de emissão</label><input id="invDate" type="date" required></div></div>
+        <label for="invService">Descrição do serviço</label><textarea id="invService" required placeholder="Ex.: instalação e manutenção elétrica"></textarea>
+        <div class="form-row"><div><label for="invNumber">Número da NFS-e</label><input id="invNumber" placeholder="Número após emitir"></div><div><label for="invLink">Link / PDF da nota</label><input id="invLink" type="url" placeholder="https://..."></div></div>
+        <button type="submit">Salvar no histórico</button><div id="invoiceStatus" class="status" aria-live="polite"></div>
       </form>
     </section>
     <section class="panel"><h3>Registrar boleto do Nubank</h3>
       <form id="billForm">
         <label for="billClient">Nome do cliente</label><input id="billClient" required>
         <div class="form-row"><div><label for="billAmount">Valor (R$)</label><input id="billAmount" type="number" min="0.01" step="0.01" required></div><div><label for="billDue">Vencimento</label><input id="billDue" type="date" required></div></div>
-        <label for="billRef">DescriÃ§Ã£o / referÃªncia</label><input id="billRef" placeholder="Ex.: serviÃ§o de instalaÃ§Ã£o elÃ©trica">
-        <div class="form-row"><div><label for="billStatus">SituaÃ§Ã£o</label><select id="billStatus"><option>Pendente</option><option>Pago</option><option>Vencido</option><option>Cancelado</option></select></div><div><label for="billNumber">Número / identificação</label><input id="billNumber" placeholder="Identificação do boleto"></div></div>
+        <label for="billRef">Descrição / referência</label><input id="billRef" placeholder="Ex.: serviço de instalação elétrica">
+        <div class="form-row"><div><label for="billStatus">Situação</label><select id="billStatus"><option>Pendente</option><option>Pago</option><option>Vencido</option><option>Cancelado</option></select></div><div><label for="billNumber">Número / identificação</label><input id="billNumber" placeholder="Identificação do boleto"></div></div>
         <label for="billLink">Link de pagamento / boleto</label><input id="billLink" type="url" placeholder="Cole o link gerado no Nubank">
-        <button type="submit">Salvar no histÃ³rico</button><div id="billFormStatus" class="status" aria-live="polite"></div>
+        <button type="submit">Salvar no histórico</button><div id="billFormStatus" class="status" aria-live="polite"></div>
       </form>
     </section>
   </div>
-  <section class="panel"><h3>HistÃ³rico de notas fiscais</h3><div id="invoiceList" class="data-list"><p class="muted">Carregando...</p></div></section>
-  <section class="panel"><h3>HistÃ³rico de boletos</h3><div id="billList" class="data-list"><p class="muted">Carregando...</p></div></section>
+  <section class="panel"><h3>Histórico de notas fiscais</h3><div id="invoiceList" class="data-list"><p class="muted">Carregando...</p></div></section>
+  <section class="panel"><h3>Histórico de boletos</h3><div id="billList" class="data-list"><p class="muted">Carregando...</p></div></section>
 </div></main>
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/13.2.0/firebase-app.js";
@@ -102,30 +102,30 @@ function monday(d){const x=new Date(d);x.setHours(0,0,0,0);x.setDate(x.getDate()
 function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 function render(){
  const start=monday(new Date());start.setDate(start.getDate()+weekOffset*7);const finish=new Date(start);finish.setDate(finish.getDate()+6);
- $('weekLabel').textContent=start.toLocaleDateString('pt-BR')+' â€” '+finish.toLocaleDateString('pt-BR');
- $('weekGrid').innerHTML='';const names=['Segunda','TerÃ§a','Quarta','Quinta','Sexta','SÃ¡bado','Domingo'];
+ $('weekLabel').textContent=start.toLocaleDateString('pt-BR')+' — '+finish.toLocaleDateString('pt-BR');
+ $('weekGrid').innerHTML='';const names=['Segunda','Terça','Quarta','Quinta','Sexta','Sábado','Domingo'];
  for(let i=0;i<7;i++){
   const d=new Date(start);d.setDate(start.getDate()+i);const key=iso(d),day=document.createElement('section');day.className='day'+(key===iso(new Date())?' today':'');
   const head=document.createElement('div');head.className='day-head';const label=document.createElement('div');
   const items=bookings.filter(b=>b.date===key).sort((a,b)=>(a.time||'').localeCompare(b.time||''));
-  label.innerHTML='<b>'+names[i]+' â€” '+d.toLocaleDateString('pt-BR')+'</b> <small>â€¢ '+items.length+' serviÃ§o(s)</small>';
-  const add=document.createElement('button');add.className='secondary';add.textContent='+ Adicionar serviÃ§o neste dia';add.onclick=()=>{resetForm();$('date').value=key;$('formTitle').textContent='Novo serviÃ§o â€” '+names[i];$('bookingForm').scrollIntoView({behavior:'smooth',block:'start'});$('client').focus()};
+  label.innerHTML='<b>'+names[i]+' — '+d.toLocaleDateString('pt-BR')+'</b> <small>• '+items.length+' serviço(s)</small>';
+  const add=document.createElement('button');add.className='secondary';add.textContent='+ Adicionar serviço neste dia';add.onclick=()=>{resetForm();$('date').value=key;$('formTitle').textContent='Novo serviço — '+names[i];$('bookingForm').scrollIntoView({behavior:'smooth',block:'start'});$('client').focus()};
   head.append(label,add);day.append(head);
   const wrap=document.createElement('div');wrap.className='sheet-wrap';const table=document.createElement('table');table.className='sheet';
-  table.innerHTML='<thead><tr><th>HorÃ¡rio</th><th>Cliente</th><th>Telefone</th><th>ServiÃ§o</th><th>EndereÃ§o</th><th>ObservaÃ§Ãµes</th><th>AÃ§Ãµes</th></tr></thead>';const body=document.createElement('tbody');
-  if(!items.length){const tr=document.createElement('tr');tr.innerHTML='<td class="empty-row" colspan="7">Nenhum serviÃ§o agendado para este dia</td>';body.append(tr)}
+  table.innerHTML='<thead><tr><th>Horário</th><th>Cliente</th><th>Telefone</th><th>Serviço</th><th>Endereço</th><th>Observações</th><th>Ações</th></tr></thead>';const body=document.createElement('tbody');
+  if(!items.length){const tr=document.createElement('tr');tr.innerHTML='<td class="empty-row" colspan="7">Nenhum serviço agendado para este dia</td>';body.append(tr)}
   items.forEach(b=>{const tr=document.createElement('tr');tr.innerHTML='<td><strong>'+esc(b.time||'')+'</strong></td><td>'+esc(b.client||'')+'</td><td>'+esc(b.phone||'')+'</td><td>'+esc(b.service||'')+'</td><td>'+esc(b.address||'')+'</td><td>'+esc(b.details||'')+'</td><td class="actions-cell"></td>';
    const cell=tr.lastElementChild;const edit=document.createElement('button');edit.className='secondary';edit.textContent='Editar';edit.onclick=()=>editBooking(b);
-   const del=document.createElement('button');del.className='danger';del.textContent='Apagar';del.onclick=async()=>{if(confirm('Apagar este serviÃ§o?')){try{await remove(ref(db,'bookings/'+b.id));$('formStatus').textContent='ServiÃ§o apagado.'}catch(e){showError('formStatus',e)}}};
+   const del=document.createElement('button');del.className='danger';del.textContent='Apagar';del.onclick=async()=>{if(confirm('Apagar este serviço?')){try{await remove(ref(db,'bookings/'+b.id));$('formStatus').textContent='Serviço apagado.'}catch(e){showError('formStatus',e)}}};
    cell.append(edit,del);body.append(tr);
   });
   table.append(body);wrap.append(table);day.append(wrap);$('weekGrid').append(day);
  }
 }
 function showError(id,e){$(id).textContent=errorText(e);$(id).classList.add('error')}
-function errorText(e){const c=e?.code||'';if(c.includes('invalid-credential')||c.includes('wrong-password')||c.includes('user-not-found'))return 'E-mail ou senha incorretos.';if(c.includes('permission-denied'))return 'Acesso negado. Confira as regras do Realtime Database.';if(c.includes('network'))return 'Falha de conexÃ£o. Verifique a internet e tente novamente.';return 'NÃ£o foi possÃ­vel concluir. '+(e?.message||'Verifique a configuraÃ§Ã£o do Firebase.')}
+function errorText(e){const c=e?.code||'';if(c.includes('invalid-credential')||c.includes('wrong-password')||c.includes('user-not-found'))return 'E-mail ou senha incorretos.';if(c.includes('permission-denied'))return 'Acesso negado. Confira as regras do Realtime Database.';if(c.includes('network'))return 'Falha de conexão. Verifique a internet e tente novamente.';return 'Não foi possível concluir. '+(e?.message||'Verifique a configuração do Firebase.')}
 function resetForm(){$('bookingForm').reset();$('bookingId').value='';$('formTitle').textContent='Novo agendamento';$('saveBooking').textContent='Salvar agendamento';$('cancelEdit').classList.add('hidden')}
-function editBooking(b){$('bookingId').value=b.id;$('client').value=b.client||'';$('phone').value=b.phone||'';$('service').value=b.service||'';$('date').value=b.date||'';$('time').value=b.time||'';$('address').value=b.address||'';$('details').value=b.details||'';$('formTitle').textContent='Editar agendamento';$('saveBooking').textContent='Salvar alteraÃ§Ãµes';$('cancelEdit').classList.remove('hidden');$('client').focus();window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'})}
+function editBooking(b){$('bookingId').value=b.id;$('client').value=b.client||'';$('phone').value=b.phone||'';$('service').value=b.service||'';$('date').value=b.date||'';$('time').value=b.time||'';$('address').value=b.address||'';$('details').value=b.details||'';$('formTitle').textContent='Editar agendamento';$('saveBooking').textContent='Salvar alterações';$('cancelEdit').classList.remove('hidden');$('client').focus();window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'})}
 $('loginForm').addEventListener('submit',async e=>{e.preventDefault();$('loginStatus').classList.remove('error');$('loginStatus').textContent='Entrando...';$('loginButton').disabled=true;try{await signInWithEmailAndPassword(auth,$('email').value.trim(),$('password').value)}catch(err){showError('loginStatus',err)}finally{$('loginButton').disabled=false}});
 $('logout').onclick=()=>signOut(auth);
 onAuthStateChanged(auth,user=>{
@@ -138,14 +138,14 @@ $('bookingForm').addEventListener('submit',async e=>{e.preventDefault();$('formS
  try{const id=$('bookingId').value;if(id)await update(ref(db,'bookings/'+id),data);else{const newRef=push(ref(db,'bookings'));await set(newRef,{...data,createdAt:Date.now()})}resetForm();$('formStatus').textContent='Agendamento salvo e sincronizado!'}catch(err){showError('formStatus',err)}finally{$('saveBooking').disabled=false}
 });
 $('cancelEdit').onclick=()=>resetForm();$('prev').onclick=()=>{weekOffset--;render()};$('next').onclick=()=>{weekOffset++;render()};
-$('export').onclick=()=>{const rows=[['Nome','Telefone','ServiÃ§o','Data','HorÃ¡rio','EndereÃ§o','DescriÃ§Ã£o'],...bookings.map(b=>[b.client,b.phone,b.service,b.date,b.time,b.address,b.details])];const csv=rows.map(r=>r.map(v=>'"'+String(v||'').replaceAll('"','""')+'"').join(';')).join('\n');const a=document.createElement('a');a.href=URL.createObjectURL(new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8'}));a.download='agenda-gc.csv';a.click();URL.revokeObjectURL(a.href)};
+$('export').onclick=()=>{const rows=[['Nome','Telefone','Serviço','Data','Horário','Endereço','Descrição'],...bookings.map(b=>[b.client,b.phone,b.service,b.date,b.time,b.address,b.details])];const csv=rows.map(r=>r.map(v=>'"'+String(v||'').replaceAll('"','""')+'"').join(';')).join('\n');const a=document.createElement('a');a.href=URL.createObjectURL(new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8'}));a.download='agenda-gc.csv';a.click();URL.revokeObjectURL(a.href)};
 $('date').min=iso(new Date());
 function money(v){return Number(v||0).toLocaleString('pt-BR',{style:'currency',currency:'BRL'})}
-function renderInvoices(){const el=$('invoiceList');if(!invoices.length){el.innerHTML='<p class="muted">Nenhuma nota registrada.</p>';return}el.innerHTML='<table><thead><tr><th>EmissÃ£o</th><th>Cliente</th><th>CPF/CNPJ</th><th>ServiÃ§o</th><th>Valor</th><th>NFS-e</th><th>Link</th><th></th></tr></thead><tbody>'+invoices.sort((a,b)=>(b.date||'').localeCompare(a.date||'')).map(x=>'<tr><td>'+esc(x.date)+'</td><td>'+esc(x.client)+'</td><td>'+esc(x.doc)+'</td><td>'+esc(x.service)+'</td><td>'+money(x.amount)+'</td><td>'+esc(x.number||'â€”')+'</td><td>'+(x.link?'<a class="external" target="_blank" rel="noopener" href="'+esc(x.link)+'">Abrir</a>':'â€”')+'</td><td><button class="danger" data-del-inv="'+esc(x.id)+'">Excluir</button></td></tr>').join('')+'</tbody></table>';el.querySelectorAll('[data-del-inv]').forEach(b=>b.onclick=async()=>{if(confirm('Excluir este registro de nota?'))await remove(ref(db,'invoices/'+b.dataset.delInv))})}
-function renderBills(){const el=$('billList');if(!bills.length){el.innerHTML='<p class="muted">Nenhum boleto registrado.</p>';return}el.innerHTML='<table><thead><tr><th>Cliente</th><th>ReferÃªncia</th><th>Valor</th><th>Vencimento</th><th>Status</th><th>Número</th><th>Link</th><th></th></tr></thead><tbody>'+bills.sort((a,b)=>(a.due||'').localeCompare(b.due||'')).map(x=>'<tr><td>'+esc(x.client)+'</td><td>'+esc(x.ref||'â€”')+'</td><td>'+money(x.amount)+'</td><td>'+esc(x.due)+'</td><td><span class="tag">'+esc(x.status)+'</span></td><td>'+esc(x.number||'â€”')+'</td><td>'+(x.link?'<a class="external" target="_blank" rel="noopener" href="'+esc(x.link)+'">Abrir</a>':'â€”')+'</td><td><button class="danger" data-del-bill="'+esc(x.id)+'">Excluir</button></td></tr>').join('')+'</tbody></table>';el.querySelectorAll('[data-del-bill]').forEach(b=>b.onclick=async()=>{if(confirm('Excluir este registro de boleto?'))await remove(ref(db,'bills/'+b.dataset.delBill))})}
+function renderInvoices(){const el=$('invoiceList');if(!invoices.length){el.innerHTML='<p class="muted">Nenhuma nota registrada.</p>';return}el.innerHTML='<table><thead><tr><th>Emissão</th><th>Cliente</th><th>CPF/CNPJ</th><th>Serviço</th><th>Valor</th><th>NFS-e</th><th>Link</th><th></th></tr></thead><tbody>'+invoices.sort((a,b)=>(b.date||'').localeCompare(a.date||'')).map(x=>'<tr><td>'+esc(x.date)+'</td><td>'+esc(x.client)+'</td><td>'+esc(x.doc)+'</td><td>'+esc(x.service)+'</td><td>'+money(x.amount)+'</td><td>'+esc(x.number||'—')+'</td><td>'+(x.link?'<a class="external" target="_blank" rel="noopener" href="'+esc(x.link)+'">Abrir</a>':'—')+'</td><td><button class="danger" data-del-inv="'+esc(x.id)+'">Excluir</button></td></tr>').join('')+'</tbody></table>';el.querySelectorAll('[data-del-inv]').forEach(b=>b.onclick=async()=>{if(confirm('Excluir este registro de nota?'))await remove(ref(db,'invoices/'+b.dataset.delInv))})}
+function renderBills(){const el=$('billList');if(!bills.length){el.innerHTML='<p class="muted">Nenhum boleto registrado.</p>';return}el.innerHTML='<table><thead><tr><th>Cliente</th><th>Referência</th><th>Valor</th><th>Vencimento</th><th>Status</th><th>Número</th><th>Link</th><th></th></tr></thead><tbody>'+bills.sort((a,b)=>(a.due||'').localeCompare(b.due||'')).map(x=>'<tr><td>'+esc(x.client)+'</td><td>'+esc(x.ref||'—')+'</td><td>'+money(x.amount)+'</td><td>'+esc(x.due)+'</td><td><span class="tag">'+esc(x.status)+'</span></td><td>'+esc(x.number||'—')+'</td><td>'+(x.link?'<a class="external" target="_blank" rel="noopener" href="'+esc(x.link)+'">Abrir</a>':'—')+'</td><td><button class="danger" data-del-bill="'+esc(x.id)+'">Excluir</button></td></tr>').join('')+'</tbody></table>';el.querySelectorAll('[data-del-bill]').forEach(b=>b.onclick=async()=>{if(confirm('Excluir este registro de boleto?'))await remove(ref(db,'bills/'+b.dataset.delBill))})}
 document.querySelectorAll('.navtabs button').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('.navtabs button').forEach(x=>x.classList.toggle('active',x===btn));$('agendaPage').classList.toggle('hidden',btn.dataset.page!=='agendaPage');$('financePage').classList.toggle('hidden',btn.dataset.page!=='financePage')}));
-$('invoiceForm').addEventListener('submit',async e=>{e.preventDefault();$('invoiceStatus').textContent='Salvando...';const data={client:$('invClient').value.trim(),doc:$('invDoc').value.trim(),amount:Number($('invAmount').value),service:$('invService').value.trim(),date:$('invDate').value,number:$('invNumber').value.trim(),link:$('invLink').value.trim(),createdAt:Date.now()};try{await set(push(ref(db,'invoices')) ,data);$('invoiceForm').reset();$('invoiceStatus').textContent='Nota registrada no histÃ³rico.'}catch(err){showError('invoiceStatus',err)}});
-$('billForm').addEventListener('submit',async e=>{e.preventDefault();$('billFormStatus').textContent='Salvando...';const data={client:$('billClient').value.trim(),amount:Number($('billAmount').value),due:$('billDue').value,ref:$('billRef').value.trim(),status:$('billStatus').value,link:$('billLink').value.trim(),number:$('billNumber').value.trim(),createdAt:Date.now()};try{await set(push(ref(db,'bills')),data);$('billForm').reset();$('billFormStatus').textContent='Boleto registrado no histÃ³rico.'}catch(err){showError('billFormStatus',err)}});
+$('invoiceForm').addEventListener('submit',async e=>{e.preventDefault();$('invoiceStatus').textContent='Salvando...';const data={client:$('invClient').value.trim(),doc:$('invDoc').value.trim(),amount:Number($('invAmount').value),service:$('invService').value.trim(),date:$('invDate').value,number:$('invNumber').value.trim(),link:$('invLink').value.trim(),createdAt:Date.now()};try{await set(push(ref(db,'invoices')) ,data);$('invoiceForm').reset();$('invoiceStatus').textContent='Nota registrada no histórico.'}catch(err){showError('invoiceStatus',err)}});
+$('billForm').addEventListener('submit',async e=>{e.preventDefault();$('billFormStatus').textContent='Salvando...';const data={client:$('billClient').value.trim(),amount:Number($('billAmount').value),due:$('billDue').value,ref:$('billRef').value.trim(),status:$('billStatus').value,link:$('billLink').value.trim(),number:$('billNumber').value.trim(),createdAt:Date.now()};try{await set(push(ref(db,'bills')),data);$('billForm').reset();$('billFormStatus').textContent='Boleto registrado no histórico.'}catch(err){showError('billFormStatus',err)}});
 $('invDate').value=iso(new Date());
 render();
 </script>
