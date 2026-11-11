@@ -1,3 +1,5 @@
+[Reading 93 lines from start (total: 93 lines, 0 remaining)]
+
 <!doctype html>
 <html lang="pt-BR">
 <head>
@@ -9,8 +11,8 @@
 header{background:linear-gradient(120deg,#101d31,#172b46);border-bottom:1px solid var(--line);padding:17px max(4vw,18px);display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
 .brand{display:flex;align-items:center;gap:12px}.logo{width:44px;height:44px;border-radius:12px;background:var(--yellow);color:#111827;display:grid;place-items:center;font-weight:900;font-size:20px}.brand h1{font-size:18px;margin:0}.brand small{color:var(--muted)}
 main{max-width:1200px;margin:28px auto;padding:0 18px}.panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px;margin-bottom:18px}.login-wrap{max-width:430px;margin:8vh auto}.login-wrap h2{margin-top:0}h2,h3{margin-top:0}label{display:block;font-weight:700;margin:12px 0 6px}input,select,textarea{width:100%;background:#0b1525;border:1px solid #34445d;color:var(--text);padding:12px;border-radius:8px;font:inherit}textarea{min-height:75px;resize:vertical}
-button{border:0;background:var(--yellow);color:#111827;font-weight:800;padding:11px 15px;border-radius:8px;cursor:pointer;font:inherit}button:disabled{opacity:.5;cursor:wait}.secondary{background:#263852;color:var(--text);border:1px solid #40516a}.danger{background:#512d38;color:#fff;border:1px solid #854653}.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}.columns{display:grid;grid-template-columns:1fr 1fr;gap:18px}.week-head{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:14px}.week-grid{display:grid;grid-template-columns:repeat(7,minmax(130px,1fr));gap:8px;overflow-x:auto;padding-bottom:5px}.day{background:#0b1525;border:1px solid var(--line);border-radius:10px;padding:10px;min-height:145px}.day.today{border-color:var(--yellow)}.day b{display:block;font-size:13px}.day small,.muted{color:var(--muted)}.booking{background:#243954;border-left:3px solid var(--yellow);padding:8px;margin-top:8px;border-radius:5px;font-size:12px;overflow-wrap:anywhere}.booking strong{display:block}.booking button{padding:4px 7px;font-size:11px;margin:7px 5px 0 0}.status{color:var(--green);min-height:22px;margin-top:9px}.error{color:var(--red)}.topline{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}.hidden{display:none!important}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.note{font-size:12px;color:var(--muted);margin-top:12px}
-@media(max-width:800px){.columns{grid-template-columns:1fr}.week-grid{grid-template-columns:repeat(7,145px)}.form-row{grid-template-columns:1fr}}
+button{border:0;background:var(--yellow);color:#111827;font-weight:800;padding:11px 15px;border-radius:8px;cursor:pointer;font:inherit}button:disabled{opacity:.5;cursor:wait}.secondary{background:#263852;color:var(--text);border:1px solid #40516a}.danger{background:#512d38;color:#fff;border:1px solid #854653}.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}.columns{display:grid;grid-template-columns:1fr 1fr;gap:18px}.week-head{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:14px}.week-grid{display:flex;flex-direction:column;gap:14px}.day{background:#0b1525;border:1px solid var(--line);border-radius:10px;padding:14px;min-width:0}.day.today{border-color:var(--yellow)}.day-head{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:10px}.day-head b{font-size:16px}.day small,.muted{color:var(--muted)}.sheet-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:8px}.sheet{width:100%;border-collapse:collapse;min-width:850px;font-size:13px}.sheet th,.sheet td{padding:9px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}.sheet th{background:#18263d;color:#f5b82e;white-space:nowrap}.sheet tr:last-child td{border-bottom:0}.sheet td.actions-cell{white-space:nowrap}.sheet button{padding:5px 8px;font-size:11px;margin-right:5px}.empty-row{text-align:center!important;color:var(--muted);padding:18px!important}.status{color:var(--green);min-height:22px;margin-top:9px}.error{color:var(--red)}.topline{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}.hidden{display:none!important}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.note{font-size:12px;color:var(--muted);margin-top:12px}
+@media(max-width:800px){.columns{grid-template-columns:1fr}.form-row{grid-template-columns:1fr}.day{padding:10px}}
 </style>
 </head>
 <body>
@@ -60,16 +62,26 @@ const iso=d=>`${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
 function monday(d){const x=new Date(d);x.setHours(0,0,0,0);x.setDate(x.getDate()-(x.getDay()+6)%7);return x}
 function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 function render(){
- const start=monday(new Date());start.setDate(start.getDate()+weekOffset*7);const end=new Date(start);end.setDate(end.getDate()+6);
- $('weekLabel').textContent=`${start.toLocaleDateString('pt-BR')} — ${end.toLocaleDateString('pt-BR')}`;
+ const start=monday(new Date());start.setDate(start.getDate()+weekOffset*7);const finish=new Date(start);finish.setDate(finish.getDate()+6);
+ $('weekLabel').textContent=start.toLocaleDateString('pt-BR')+' — '+finish.toLocaleDateString('pt-BR');
  $('weekGrid').innerHTML='';const names=['Segunda','Terça','Quarta','Quinta','Sexta','Sábado','Domingo'];
- for(let i=0;i<7;i++){const d=new Date(start);d.setDate(start.getDate()+i);const key=iso(d),day=document.createElement('div');day.className='day'+(key===iso(new Date())?' today':'');day.innerHTML=`<b>${names[i]}</b><small>${d.toLocaleDateString('pt-BR')}</small>`;
- const items=bookings.filter(b=>b.date===key).sort((a,b)=>(a.time||'').localeCompare(b.time||''));
- if(!items.length){const e=document.createElement('div');e.className='muted';e.style.marginTop='14px';e.textContent='Sem serviços';day.append(e)}
- items.forEach(b=>{const el=document.createElement('div');el.className='booking';el.innerHTML=`<strong>${esc(b.time)} • ${esc(b.client)}</strong><div>${esc(b.service)}</div><div>${esc(b.phone||'')}</div>`;
- const edit=document.createElement('button');edit.className='secondary';edit.textContent='Editar';edit.onclick=()=>editBooking(b);
- const del=document.createElement('button');del.className='danger';del.textContent='Excluir';del.onclick=async()=>{if(confirm('Excluir este agendamento?')){try{await remove(ref(db,'bookings/'+b.id));$('formStatus').textContent='Agendamento excluído.'}catch(e){showError('formStatus',e)}}};
- el.append(edit,del);day.append(el)});$('weekGrid').append(day)}
+ for(let i=0;i<7;i++){
+  const d=new Date(start);d.setDate(start.getDate()+i);const key=iso(d),day=document.createElement('section');day.className='day'+(key===iso(new Date())?' today':'');
+  const head=document.createElement('div');head.className='day-head';const label=document.createElement('div');
+  const items=bookings.filter(b=>b.date===key).sort((a,b)=>(a.time||'').localeCompare(b.time||''));
+  label.innerHTML='<b>'+names[i]+' — '+d.toLocaleDateString('pt-BR')+'</b> <small>• '+items.length+' serviço(s)</small>';
+  const add=document.createElement('button');add.className='secondary';add.textContent='+ Adicionar serviço neste dia';add.onclick=()=>{resetForm();$('date').value=key;$('formTitle').textContent='Novo serviço — '+names[i];$('bookingForm').scrollIntoView({behavior:'smooth',block:'start'});$('client').focus()};
+  head.append(label,add);day.append(head);
+  const wrap=document.createElement('div');wrap.className='sheet-wrap';const table=document.createElement('table');table.className='sheet';
+  table.innerHTML='<thead><tr><th>Horário</th><th>Cliente</th><th>Telefone</th><th>Serviço</th><th>Endereço</th><th>Observações</th><th>Ações</th></tr></thead>';const body=document.createElement('tbody');
+  if(!items.length){const tr=document.createElement('tr');tr.innerHTML='<td class="empty-row" colspan="7">Nenhum serviço agendado para este dia</td>';body.append(tr)}
+  items.forEach(b=>{const tr=document.createElement('tr');tr.innerHTML='<td><strong>'+esc(b.time||'')+'</strong></td><td>'+esc(b.client||'')+'</td><td>'+esc(b.phone||'')+'</td><td>'+esc(b.service||'')+'</td><td>'+esc(b.address||'')+'</td><td>'+esc(b.details||'')+'</td><td class="actions-cell"></td>';
+   const cell=tr.lastElementChild;const edit=document.createElement('button');edit.className='secondary';edit.textContent='Editar';edit.onclick=()=>editBooking(b);
+   const del=document.createElement('button');del.className='danger';del.textContent='Apagar';del.onclick=async()=>{if(confirm('Apagar este serviço?')){try{await remove(ref(db,'bookings/'+b.id));$('formStatus').textContent='Serviço apagado.'}catch(e){showError('formStatus',e)}}};
+   cell.append(edit,del);body.append(tr);
+  });
+  table.append(body);wrap.append(table);day.append(wrap);$('weekGrid').append(day);
+ }
 }
 function showError(id,e){$(id).textContent=errorText(e);$(id).classList.add('error')}
 function errorText(e){const c=e?.code||'';if(c.includes('invalid-credential')||c.includes('wrong-password')||c.includes('user-not-found'))return 'E-mail ou senha incorretos.';if(c.includes('permission-denied'))return 'Acesso negado. Confira as regras do Realtime Database.';if(c.includes('network'))return 'Falha de conexão. Verifique a internet e tente novamente.';return 'Não foi possível concluir. '+(e?.message||'Verifique a configuração do Firebase.')}
@@ -91,3 +103,5 @@ $('export').onclick=()=>{const rows=[['Nome','Telefone','Serviço','Data','Horá
 $('date').min=iso(new Date());render();
 </script>
 </body></html>
+
+[executed on device: DESKTOP-7HG4VD8 (7ad4fe0c-6f5b-4083-b9a6-89a53ed203ff)]
