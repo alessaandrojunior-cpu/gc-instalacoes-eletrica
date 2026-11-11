@@ -42,7 +42,41 @@ button{border:0;background:var(--yellow);color:#111827;font-weight:800;padding:1
 </form></section>
 <section class="panel"><h3>Organização</h3><p class="muted">Use a agenda semanal para localizar os serviços. Cada registro pode ser editado ou excluído. As alterações aparecem nos outros dispositivos conectados.</p><div class="actions"><button class="secondary" id="export">Exportar agenda (CSV)</button></div><p class="note">Acesso restrito a usuários autenticados no Firebase. Não compartilhe sua senha.</p></section>
 </div></section>
-</main>
+<div id="financePage" class="hidden">
+  <section class="panel">
+    <h2>Notas e Boletos</h2>
+    <p class="muted">Cadastre os dados e acompanhe os documentos emitidos. Os registros ficam sincronizados com os demais dispositivos.</p>
+    <div class="finance-actions">
+      <a class="external" href="https://www.nfse.gov.br/EmissorNacional" target="_blank" rel="noopener">Abrir Emissor Nacional de NFS-e ↗</a>
+      <a class="external" href="https://nubank.com.br/" target="_blank" rel="noopener">Acessar Nubank ↗</a>
+    </div>
+    <p class="note">Esta área organiza e registra os documentos. A emissão fiscal válida deve ser concluída no Emissor Nacional e o boleto deve ser gerado no Nubank. Depois, informe o número e o link aqui.</p>
+  </section>
+  <div class="finance-grid">
+    <section class="panel"><h3>Registrar nota fiscal (NFS-e)</h3>
+      <form id="invoiceForm">
+        <label for="invClient">Nome / razão social do cliente</label><input id="invClient" required>
+        <label for="invDoc">CPF / CNPJ</label><input id="invDoc" required>
+        <div class="form-row"><div><label for="invAmount">Valor (R$)</label><input id="invAmount" type="number" min="0.01" step="0.01" required></div><div><label for="invDate">Data de emissão</label><input id="invDate" type="date" required></div></div>
+        <label for="invService">Descrição do serviço</label><textarea id="invService" required placeholder="Ex.: instalação e manutenção elétrica"></textarea>
+        <div class="form-row"><div><label for="invNumber">Número da NFS-e</label><input id="invNumber" placeholder="Número após emitir"></div><div><label for="invLink">Link / PDF da nota</label><input id="invLink" type="url" placeholder="https://..."></div></div>
+        <button type="submit">Salvar no histórico</button><div id="invoiceStatus" class="status" aria-live="polite"></div>
+      </form>
+    </section>
+    <section class="panel"><h3>Registrar boleto do Nubank</h3>
+      <form id="billForm">
+        <label for="billClient">Nome do cliente</label><input id="billClient" required>
+        <div class="form-row"><div><label for="billAmount">Valor (R$)</label><input id="billAmount" type="number" min="0.01" step="0.01" required></div><div><label for="billDue">Vencimento</label><input id="billDue" type="date" required></div></div>
+        <label for="billRef">Descrição / referência</label><input id="billRef" placeholder="Ex.: serviço de instalação elétrica">
+        <div class="form-row"><div><label for="billStatus">Situação</label><select id="billStatus"><option>Pendente</option><option>Pago</option><option>Vencido</option><option>Cancelado</option></select></div><div><label for="billNumber">Número / identificação</label><input id="billNumber" placeholder="Identificação do boleto"></div></div>
+        <label for="billLink">Link de pagamento / boleto</label><input id="billLink" type="url" placeholder="Cole o link gerado no Nubank">
+        <button type="submit">Salvar no histórico</button><div id="billFormStatus" class="status" aria-live="polite"></div>
+      </form>
+    </section>
+  </div>
+  <section class="panel"><h3>Histórico de notas fiscais</h3><div id="invoiceList" class="data-list"><p class="muted">Carregando...</p></div></section>
+  <section class="panel"><h3>Histórico de boletos</h3><div id="billList" class="data-list"><p class="muted">Carregando...</p></div></section>
+</div></main>
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/13.2.0/firebase-app.js";
 import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/13.2.0/firebase-auth.js";
