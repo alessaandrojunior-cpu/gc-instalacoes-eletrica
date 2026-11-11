@@ -1,0 +1,10 @@
+GC Instalaçoes eletrica — site inicial
+
+Como testar:
+1. Extraia o ZIP.
+2. Abra a pasta e dê duplo clique em index.html.
+3. Use “Solicitar agendamento” para cadastrar serviços.
+4. A agenda semanal mostra os registros e permite exportar CSV.
+
+Limitação:
+Esta versão é um protótipo local. Os registros ficam salvos somente no navegador/computador em que foram cadastrados. Para receber agendamentos pela internet e sincronizar celular/computador, é necessário publicar o site e conectar um banco de dados ou agenda compartilhada.
