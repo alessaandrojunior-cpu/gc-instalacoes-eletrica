@@ -1,3 +1,5 @@
+[Reading 107 lines from start (total: 107 lines, 0 remaining)]
+
 [Reading 93 lines from start (total: 93 lines, 0 remaining)]
 
 <!doctype html>
@@ -13,6 +15,8 @@ header{background:linear-gradient(120deg,#101d31,#172b46);border-bottom:1px soli
 main{max-width:1200px;margin:28px auto;padding:0 18px}.panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px;margin-bottom:18px}.login-wrap{max-width:430px;margin:8vh auto}.login-wrap h2{margin-top:0}h2,h3{margin-top:0}label{display:block;font-weight:700;margin:12px 0 6px}input,select,textarea{width:100%;background:#0b1525;border:1px solid #34445d;color:var(--text);padding:12px;border-radius:8px;font:inherit}textarea{min-height:75px;resize:vertical}
 button{border:0;background:var(--yellow);color:#111827;font-weight:800;padding:11px 15px;border-radius:8px;cursor:pointer;font:inherit}button:disabled{opacity:.5;cursor:wait}.secondary{background:#263852;color:var(--text);border:1px solid #40516a}.danger{background:#512d38;color:#fff;border:1px solid #854653}.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}.columns{display:grid;grid-template-columns:1fr 1fr;gap:18px}.week-head{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:14px}.week-grid{display:flex;flex-direction:column;gap:14px}.day{background:#0b1525;border:1px solid var(--line);border-radius:10px;padding:14px;min-width:0}.day.today{border-color:var(--yellow)}.day-head{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:10px}.day-head b{font-size:16px}.day small,.muted{color:var(--muted)}.sheet-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:8px}.sheet{width:100%;border-collapse:collapse;min-width:850px;font-size:13px}.sheet th,.sheet td{padding:9px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}.sheet th{background:#18263d;color:#f5b82e;white-space:nowrap}.sheet tr:last-child td{border-bottom:0}.sheet td.actions-cell{white-space:nowrap}.sheet button{padding:5px 8px;font-size:11px;margin-right:5px}.empty-row{text-align:center!important;color:var(--muted);padding:18px!important}.status{color:var(--green);min-height:22px;margin-top:9px}.error{color:var(--red)}.topline{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}.hidden{display:none!important}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.note{font-size:12px;color:var(--muted);margin-top:12px}
 @media(max-width:800px){.columns{grid-template-columns:1fr}.form-row{grid-template-columns:1fr}.day{padding:10px}}
+
+.navtabs{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}.navtabs button.active{background:var(--yellow);color:#111827}.navtabs button:not(.active){background:#263852;color:var(--text);border:1px solid #40516a}.finance-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.data-list{overflow-x:auto}.data-list table{width:100%;border-collapse:collapse;min-width:680px;font-size:13px}.data-list th,.data-list td{padding:10px;border-bottom:1px solid var(--line);text-align:left}.data-list th{color:var(--yellow)}.finance-actions{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}.tag{display:inline-block;padding:3px 8px;border-radius:20px;background:#263852;font-size:12px}.external{color:var(--yellow)}@media(max-width:800px){.finance-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -23,8 +27,8 @@ button{border:0;background:var(--yellow);color:#111827;font-weight:800;padding:1
 <form id="loginForm"><label for="email">E-mail</label><input id="email" type="email" autocomplete="username" required value="alessaandro.junior@gmail.com"><label for="password">Senha</label><input id="password" type="password" autocomplete="current-password" required><button id="loginButton" type="submit" style="width:100%;margin-top:16px">Entrar</button><div id="loginStatus" class="status" aria-live="polite"></div></form>
 </section>
 <section id="appView" class="hidden">
-<div class="topline"><div><h2>Agenda de serviços</h2><p class="muted">Os agendamentos são compartilhados e sincronizados em tempo real.</p></div><span class="status">● Conectado</span></div>
-<section class="panel" id="agenda"><div class="week-head"><button class="secondary" id="prev">← Semana anterior</button><strong id="weekLabel"></strong><button class="secondary" id="next">Próxima semana →</button></div><div class="week-grid" id="weekGrid"></div></section>
+<div class="topline"><div><h2>GC Instalações Elétricas</h2><p class="muted">Os agendamentos são compartilhados e sincronizados em tempo real.</p></div><span class="status">● Conectado</span></div>
+<nav class="navtabs"><button type="button" class="active" data-page="agendaPage">Agenda</button><button type="button" data-page="financePage">Notas e Boletos</button></nav><div id="agendaPage"><section class="panel" id="agenda"><div class="week-head"><button class="secondary" id="prev">← Semana anterior</button><strong id="weekLabel"></strong><button class="secondary" id="next">Próxima semana →</button></div><div class="week-grid" id="weekGrid"></div></section>
 <div class="columns">
 <section class="panel"><h3 id="formTitle">Novo agendamento</h3>
 <form id="bookingForm">
@@ -56,7 +60,7 @@ const firebaseConfig = {
 };
 const app=initializeApp(firebaseConfig), auth=getAuth(app), db=getDatabase(app);
 const $=id=>document.getElementById(id);
-let bookings=[],weekOffset=0,unsubscribe=null;
+let bookings=[],invoices=[],bills=[],weekOffset=0,unsubscribe=null,unsubInvoices=null,unsubBills=null;
 const pad=n=>String(n).padStart(2,'0');
 const iso=d=>`${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
 function monday(d){const x=new Date(d);x.setHours(0,0,0,0);x.setDate(x.getDate()-(x.getDay()+6)%7);return x}
@@ -91,8 +95,8 @@ $('loginForm').addEventListener('submit',async e=>{e.preventDefault();$('loginSt
 $('logout').onclick=()=>signOut(auth);
 onAuthStateChanged(auth,user=>{
  $('loginView').classList.toggle('hidden',!!user);$('appView').classList.toggle('hidden',!user);$('headerUser').classList.toggle('hidden',!user);
- if(user){$('userEmail').textContent=user.email||'Conectado';$('loginStatus').textContent='';if(unsubscribe)unsubscribe();unsubscribe=onValue(ref(db,'bookings'),snap=>{const data=snap.val()||{};bookings=Object.entries(data).map(([id,b])=>({...b,id}));render()},err=>showError('formStatus',err));}
- else{if(unsubscribe){unsubscribe();unsubscribe=null}bookings=[];$('password').value=''}
+ if(user){$('userEmail').textContent=user.email||'Conectado';$('loginStatus').textContent='';if(unsubscribe)unsubscribe();if(unsubInvoices)unsubInvoices();if(unsubBills)unsubBills();unsubscribe=onValue(ref(db,'bookings'),snap=>{const data=snap.val()||{};bookings=Object.entries(data).map(([id,b])=>({...b,id}));render()},err=>showError('formStatus',err));unsubInvoices=onValue(ref(db,'invoices'),snap=>{invoices=Object.entries(snap.val()||{}).map(([id,x])=>({...x,id}));renderInvoices()},err=>showError('invoiceStatus',err));unsubBills=onValue(ref(db,'bills'),snap=>{bills=Object.entries(snap.val()||{}).map(([id,x])=>({...x,id}));renderBills()},err=>showError('billFormStatus',err));}
+ else{if(unsubscribe){unsubscribe();unsubscribe=null}if(unsubInvoices){unsubInvoices();unsubInvoices=null}if(unsubBills){unsubBills();unsubBills=null}bookings=[];invoices=[];bills=[];$('password').value=''}
 });
 $('bookingForm').addEventListener('submit',async e=>{e.preventDefault();$('formStatus').classList.remove('error');$('formStatus').textContent='Salvando...';$('saveBooking').disabled=true;
  const data={client:$('client').value.trim(),phone:$('phone').value.trim(),service:$('service').value,date:$('date').value,time:$('time').value,address:$('address').value.trim(),details:$('details').value.trim(),updatedAt:Date.now()};
@@ -100,8 +104,19 @@ $('bookingForm').addEventListener('submit',async e=>{e.preventDefault();$('formS
 });
 $('cancelEdit').onclick=()=>resetForm();$('prev').onclick=()=>{weekOffset--;render()};$('next').onclick=()=>{weekOffset++;render()};
 $('export').onclick=()=>{const rows=[['Nome','Telefone','Serviço','Data','Horário','Endereço','Descrição'],...bookings.map(b=>[b.client,b.phone,b.service,b.date,b.time,b.address,b.details])];const csv=rows.map(r=>r.map(v=>'"'+String(v||'').replaceAll('"','""')+'"').join(';')).join('\n');const a=document.createElement('a');a.href=URL.createObjectURL(new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8'}));a.download='agenda-gc.csv';a.click();URL.revokeObjectURL(a.href)};
-$('date').min=iso(new Date());render();
+$('date').min=iso(new Date());
+function money(v){return Number(v||0).toLocaleString('pt-BR',{style:'currency',currency:'BRL'})}
+function renderInvoices(){const el=$('invoiceList');if(!invoices.length){el.innerHTML='<p class="muted">Nenhuma nota registrada.</p>';return}el.innerHTML='<table><thead><tr><th>Emissão</th><th>Cliente</th><th>CPF/CNPJ</th><th>Serviço</th><th>Valor</th><th>NFS-e</th><th>Link</th><th></th></tr></thead><tbody>'+invoices.sort((a,b)=>(b.date||'').localeCompare(a.date||'')).map(x=>'<tr><td>'+esc(x.date)+'</td><td>'+esc(x.client)+'</td><td>'+esc(x.doc)+'</td><td>'+esc(x.service)+'</td><td>'+money(x.amount)+'</td><td>'+esc(x.number||'—')+'</td><td>'+(x.link?'<a class="external" target="_blank" rel="noopener" href="'+esc(x.link)+'">Abrir</a>':'—')+'</td><td><button class="danger" data-del-inv="'+esc(x.id)+'">Excluir</button></td></tr>').join('')+'</tbody></table>';el.querySelectorAll('[data-del-inv]').forEach(b=>b.onclick=async()=>{if(confirm('Excluir este registro de nota?'))await remove(ref(db,'invoices/'+b.dataset.delInv))})}
+function renderBills(){const el=$('billList');if(!bills.length){el.innerHTML='<p class="muted">Nenhum boleto registrado.</p>';return}el.innerHTML='<table><thead><tr><th>Cliente</th><th>Referência</th><th>Valor</th><th>Vencimento</th><th>Status</th><th>Número</th><th>Link</th><th></th></tr></thead><tbody>'+bills.sort((a,b)=>(a.due||'').localeCompare(b.due||'')).map(x=>'<tr><td>'+esc(x.client)+'</td><td>'+esc(x.ref||'—')+'</td><td>'+money(x.amount)+'</td><td>'+esc(x.due)+'</td><td><span class="tag">'+esc(x.status)+'</span></td><td>'+esc(x.number||'—')+'</td><td>'+(x.link?'<a class="external" target="_blank" rel="noopener" href="'+esc(x.link)+'">Abrir</a>':'—')+'</td><td><button class="danger" data-del-bill="'+esc(x.id)+'">Excluir</button></td></tr>').join('')+'</tbody></table>';el.querySelectorAll('[data-del-bill]').forEach(b=>b.onclick=async()=>{if(confirm('Excluir este registro de boleto?'))await remove(ref(db,'bills/'+b.dataset.delBill))})}
+document.querySelectorAll('.navtabs button').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('.navtabs button').forEach(x=>x.classList.toggle('active',x===btn));$('agendaPage').classList.toggle('hidden',btn.dataset.page!=='agendaPage');$('financePage').classList.toggle('hidden',btn.dataset.page!=='financePage')}));
+$('invoiceForm').addEventListener('submit',async e=>{e.preventDefault();$('invoiceStatus').textContent='Salvando...';const data={client:$('invClient').value.trim(),doc:$('invDoc').value.trim(),amount:Number($('invAmount').value),service:$('invService').value.trim(),date:$('invDate').value,number:$('invNumber').value.trim(),link:$('invLink').value.trim(),createdAt:Date.now()};try{await set(push(ref(db,'invoices')) ,data);$('invoiceForm').reset();$('invoiceStatus').textContent='Nota registrada no histórico.'}catch(err){showError('invoiceStatus',err)}});
+$('billForm').addEventListener('submit',async e=>{e.preventDefault();$('billFormStatus').textContent='Salvando...';const data={client:$('billClient').value.trim(),amount:Number($('billAmount').value),due:$('billDue').value,ref:$('billRef').value.trim(),status:$('billStatus').value,link:$('billLink').value.trim(),number:$('billNumber').value.trim(),createdAt:Date.now()};try{await set(push(ref(db,'bills')),data);$('billForm').reset();$('billFormStatus').textContent='Boleto registrado no histórico.'}catch(err){showError('billFormStatus',err)}});
+$('openNubankInfo').onclick=()=>alert('Quando você responder sobre a conta Nubank, configuramos a orientação correta para gerar o boleto no app ou internet banking. Depois, cole aqui o link e o número do boleto para acompanhar no site da GC.');
+$('invDate').value=iso(new Date());
+render();
 </script>
 </body></html>
+
+[executed on device: DESKTOP-7HG4VD8 (7ad4fe0c-6f5b-4083-b9a6-89a53ed203ff)]
 
 [executed on device: DESKTOP-7HG4VD8 (7ad4fe0c-6f5b-4083-b9a6-89a53ed203ff)]
